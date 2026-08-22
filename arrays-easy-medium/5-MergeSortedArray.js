@@ -23,6 +23,27 @@
 // The result of the merge is [1].
 // Note that because m = 0, there are no elements in nums1. The 0 is only there to ensure the merge result can fit in nums1.
 
+// APPROACH 2
+var merge = function (nums1, m, nums2, n) {
+  let num1Copy = nums1.slice(0, m);
+  let p1 = 0;
+  let p2 = 0;
+
+  for (let i = 0; i < m + n; i++) {
+    // p1 will go inside nums1 only when num1Copy[p1] < nums2[p2] AND p1 is not out of bound OR when p2 is out of bound
+    if (p2 >= n || (p1 < m && num1Copy[p1] < nums2[p2])) {
+      nums1[i] = num1Copy[p1];
+      p1++;
+    } else {
+      nums1[i] = nums2[p2];
+      p2++;
+    }
+  }
+
+  return nums1;
+};
+
+// APPROACH 3
 var merge = function (nums1, m, nums2, n) {
   let p1 = m - 1;
   let p2 = n - 1;
@@ -38,4 +59,5 @@ var merge = function (nums1, m, nums2, n) {
       p2--;
     }
   }
+  return nums1;
 };
