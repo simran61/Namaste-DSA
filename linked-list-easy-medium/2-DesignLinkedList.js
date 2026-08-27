@@ -21,3 +21,73 @@ function MyLinkedList() {
   this.head = null; //suppose this is a new/empty LL so its head will be pointing to null
   this.size = 0;
 }
+
+// _____________________________________
+
+// 3. Adding node at head
+
+MyLinkedList.prototype.addAtHead = function (val) {
+  let newNode = new Node(5);
+  newNode.next = this.head;
+  this.head = newNode;
+  this.size++;
+};
+
+// _____________________________________
+
+// 4. Adding node at tail
+
+MyLinkedList.prototype.addAtTail = function (val) {
+  let newNode = new Node(val);
+  // if LL is empty
+  if (this.head == null) {
+    this.head == newNode;
+  } else {
+    let curr = this.head;
+    while (curr.next !== null) {
+      curr = curr.next;
+    }
+    curr.next = newNode;
+  }
+  this.size++;
+};
+
+// 1. create a new node
+// 2. reach the last node
+// 3. link last to new node
+// 4. handle corner case
+// 5. increase size
+
+// _____________________________________
+
+// 5. Adding node at an index
+
+MyLinkedList.prototype.addAtIndex = function (index, val) {
+  let newNode = new Node(val);
+
+  // if LL is empty
+  if (index == 0) {
+    this.addAtHead(val);
+    return;
+  }
+  // if we want to insert at tail
+  else if (index === this.size) {
+    this.addAtTail(val);
+    return;
+  } else {
+    let curr = this.head;
+    for (let i = 0; i < index - 1; i++) {
+      curr = curr.next;
+    }
+    newNode.next = curr.next;
+    curr.next = newNode;
+  }
+  this.size++;
+};
+
+// 1. create a new node
+// 2. reach at (index-1) = curr
+// 3. newNode.next = curr.next [POINT NUMBER 3 & 4 can't be switched]
+// 4. curr.next = newNode
+// 5. handle corner case
+// 6. increase the size
