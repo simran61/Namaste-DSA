@@ -29,6 +29,9 @@ var lengthOfLastWord = function (s) {
   return s[s.length - 1].length; //4
 };
 
+// TIME COMPLEXITY: O(n+n) => O(2n) => O(n)
+// SPACE COMPLEXITY: O(n)
+
 // _________________________
 
 var lengthOfLastWord = function (s) {
@@ -56,6 +59,9 @@ var lengthOfLastWord = function (s) {
   return count;
 };
 
+// TIME COMPLEXITY: O(n)
+// SPACE COMPLEXITY: O(1)
+
 // __________________________________
 // 👇🏻 same logic as above just different way of writing the same code
 
@@ -77,3 +83,6 @@ var lengthOfLastWord = function (s) {
   }
   return count;
 };
+
+// TIME COMPLEXITY: O(n)
+// SPACE COMPLEXITY: O(1)
